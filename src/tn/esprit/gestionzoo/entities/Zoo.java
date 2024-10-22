@@ -1,5 +1,7 @@
 package tn.esprit.gestionzoo.entities;
 
+import org.w3c.dom.ls.LSOutput;
+
 public class Zoo {
 
 
@@ -8,7 +10,7 @@ public class Zoo {
     private String name;
     private String city ;
     private  int countAnimal = 0;
-
+    Aquatic [] aquaticAnimals =  new Aquatic[10];
     public String getName() {
         return this.name;
     }
@@ -93,8 +95,28 @@ void displayZoo(){
            return z1 ;
        return z2 ;
         }
-
-
+public void addAquaticAnimal(Aquatic aquatic){
+        if (aquaticAnimals.length == 10){
+             System.out.println("le tableau est plein");
+        }
+        else for (int i = 0; i < aquaticAnimals.length; i++) {
+            if (aquaticAnimals[i] == null) {
+                aquaticAnimals[i] = aquatic;
+            }
+        }
+}
+ public void displayNumberOfAquaticsByType(){
+        int numberofPenguins = 0;
+        int numberofDolphin = 0;
+     for (Aquatic aquaticAnimal : aquaticAnimals) {
+         if (aquaticAnimal instanceof Penguin) {
+             numberofPenguins++;
+         }
+         else if (aquaticAnimal instanceof Dolphin) {
+             numberofDolphin++;
+         }
+     }
+ }
 }
 
 
